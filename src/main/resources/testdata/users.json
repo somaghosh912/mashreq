@@ -1,0 +1,38 @@
+users:
+  - username: "maker1@mashreq.ae"
+    password: "${MAKER_PASSWORD}"
+    role: "ROLE_MAKER"
+    department: "Approvals"
+    permissions:
+      - "CREATE_CIF"
+      - "INITIATE_TRANSFER"
+      - "SUBMIT_APPROVAL"
+
+  - username: "checker1@mashreq.ae"
+    password: "${CHECKER_PASSWORD}"
+    role: "ROLE_CHECKER"
+    department: "Approvals"
+    permissions:
+      - "REVIEW_CIF"
+      - "APPROVE_TRANSFER"
+      - "AUTHORIZE_TRANSACTION"
+
+  - username: "authorizer@mashreq.ae"
+    password: "${AUTH_PASSWORD}"
+    role: "ROLE_AUTHORIZER"
+    department: "Approvals"
+    permissions:
+      - "FINAL_APPROVE"
+      - "RELEASE_TRANSACTION"
+
+testdata:
+  cif:
+    - customer_id: "CUST001"
+      customer_name: "Test Customer One"
+      customer_type: "Individual"
+      segment: "Mass"
+
+    - customer_id: "CUST002"
+      customer_name: "Test Customer Two"
+      customer_type: "Corporate"
+      segment: "Corporate"

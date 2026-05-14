@@ -1,0 +1,74 @@
+screen: LoginScreen
+module: Authentication
+description: FLEXCUBE Login Screen
+url_pattern: "/login|/auth/login"
+load_wait_condition: "VISIBLE"
+adf_enabled: false
+
+elements:
+  username_field:
+    name: username_field
+    id: "username"
+    type: "input"
+    timeout: 30
+    wait_condition: "VISIBLE"
+    validation_rules:
+      min_length: 3
+      pattern: "^[a-zA-Z0-9._@]+$"
+    fallback_locators:
+      xpath: "//input[@name='username']"
+      css: "input#username"
+
+  password_field:
+    name: password_field
+    id: "password"
+    xpath: "//input[@id='password']"
+    type: "input"
+    timeout: 30
+    wait_condition: "VISIBLE"
+    is_dynamic: false
+    fallback_locators:
+      name: "password"
+      css: "input[type='password']"
+
+  login_button:
+    name: login_button
+    text: "Login"
+    css: "button.btn-login"
+    type: "button"
+    timeout: 30
+    wait_condition: "CLICKABLE"
+    healing_strategies:
+      use_text: true
+      use_aria_label: true
+    fallback_locators:
+      xpath: "//button[contains(text(), 'Login')]"
+      class: "btn-primary"
+
+  forgot_password_link:
+    name: forgot_password_link
+    text: "Forgot Password?"
+    xpath: "//a[contains(text(), 'Forgot Password')]"
+    type: "link"
+    timeout: 15
+    wait_condition: "VISIBLE"
+
+  error_message:
+    name: error_message
+    xpath: "//div[@class='alert alert-danger']"
+    type: "text"
+    timeout: 10
+    wait_condition: "VISIBLE"
+    is_dynamic: true
+
+  remember_me_checkbox:
+    name: remember_me_checkbox
+    id: "rememberMe"
+    type: "checkbox"
+    timeout: 10
+    wait_condition: "PRESENT"
+
+validation_elements:
+  page_title: "FLEXCUBE Banking System"
+  logo_image: "//img[@alt='Mashreq Logo']"
+  security_warning: "//div[@class='security-notice']"

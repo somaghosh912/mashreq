@@ -1,0 +1,42 @@
+environment: prod
+application:
+  url: "https://flexcube.mashreq.ae"
+  timeout: 60
+  max_retries: 2
+
+player:
+  browser: chromium
+  headless: true
+  slowmo: 0
+  viewport:
+    width: 1920
+    height: 1080
+  trace: false
+  screenshot: on_failure
+  video: false
+
+database:
+  driver: oracle.jdbc.driver.OracleDriver
+  url: jdbc:oracle:thin:@prod-db.mashreq.ae:1521:FLEXCUBE
+  username: ${DB_USER}
+  password: ${DB_PASSWORD}
+  connection_timeout: 60
+
+adf:
+  sync:
+    enabled: true
+    timeout: 20
+
+logging:
+  level: WARN
+  pattern: "[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] [%c{1}] %m%n"
+
+reporting:
+  extent:
+    enabled: true
+    path: "reports/extent-reports/"
+  screenshots:
+    enabled: true
+    path: "reports/screenshots/"
+  videos:
+    enabled: false

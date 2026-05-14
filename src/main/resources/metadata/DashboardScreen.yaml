@@ -1,0 +1,78 @@
+screen: DashboardScreen
+module: Dashboard
+description: FLEXCUBE Main Dashboard
+url_pattern: "/dashboard|/home"
+load_wait_condition: "VISIBLE"
+adf_enabled: false
+
+elements:
+  welcome_message:
+    name: welcome_message
+    xpath: "//h1[@class='welcome']"
+    type: "text"
+    timeout: 10
+    wait_condition: "VISIBLE"
+
+  user_menu:
+    name: user_menu
+    id: "userDropdown"
+    css: "button#userDropdown"
+    type: "button"
+    timeout: 10
+    wait_condition: "CLICKABLE"
+
+  logout_option:
+    name: logout_option
+    text: "Logout"
+    xpath: "//a[contains(text(), 'Logout')]"
+    type: "link"
+    timeout: 10
+    wait_condition: "VISIBLE"
+
+  cif_menu:
+    name: cif_menu
+    text: "CIF"
+    css: "a.menu-cif"
+    type: "button"
+    timeout: 10
+    wait_condition: "CLICKABLE"
+
+  fund_transfer_menu:
+    name: fund_transfer_menu
+    text: "Fund Transfer"
+    xpath: "//a[contains(text(), 'Fund Transfer')]"
+    type: "button"
+    timeout: 10
+    wait_condition: "CLICKABLE"
+
+  quick_actions_panel:
+    name: quick_actions_panel
+    id: "quickActions"
+    type: "container"
+    timeout: 10
+    wait_condition: "VISIBLE"
+
+  transaction_history_table:
+    name: transaction_history_table
+    id: "transactionTable"
+    type: "table"
+    timeout: 15
+    wait_condition: "VISIBLE"
+
+components:
+  notification_banner:
+    name: notification_banner
+    type: banner
+    description: System notifications and alerts
+    root_selector: "//div[@class='notification-banner']"
+    child_elements:
+      close_button:
+        xpath: "//button[@class='close']"
+        type: button
+      message_text:
+        xpath: "./span[@class='message']"
+        type: text
+
+validation_elements:
+  dashboard_loaded: "//h2[contains(text(), 'Dashboard')]"
+  user_info_panel: "//div[@class='user-info']"

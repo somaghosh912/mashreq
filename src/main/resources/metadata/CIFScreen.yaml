@@ -1,0 +1,61 @@
+screen: CIFScreen
+module: CustomerInfoFile
+description: Customer Information File Master
+url_pattern: "/cif|/customer"
+load_wait_condition: "VISIBLE"
+adf_enabled: true
+
+elements:
+  cif_id_field:
+    name: cif_id_field
+    id: "cifId"
+    type: "input"
+    timeout: 30
+    wait_condition: "VISIBLE"
+    adf_component_id: "pt1:it1"
+
+  customer_name_field:
+    name: customer_name_field
+    xpath: "//input[@id='customerName']"
+    type: "input"
+    timeout: 30
+    wait_condition: "VISIBLE"
+    validation_rules:
+      min_length: 2
+      max_length: 100
+
+  customer_type_dropdown:
+    name: customer_type_dropdown
+    id: "customerType"
+    type: "select"
+    timeout: 15
+    wait_condition: "CLICKABLE"
+    adf_component_id: "pt1:soc1"
+
+  save_button:
+    name: save_button
+    text: "Save"
+    xpath: "//button[contains(text(), 'Save')]"
+    type: "button"
+    timeout: 30
+    wait_condition: "CLICKABLE"
+
+  submit_button:
+    name: submit_button
+    text: "Submit for Approval"
+    css: "button.btn-submit"
+    type: "button"
+    timeout: 30
+    wait_condition: "CLICKABLE"
+
+  success_message:
+    name: success_message
+    xpath: "//div[@class='alert alert-success']"
+    type: "text"
+    timeout: 10
+    wait_condition: "VISIBLE"
+    is_dynamic: true
+
+validation_elements:
+  cif_form_title: "//h2[contains(text(), 'CIF Master')]"
+  mandatory_indicator: "//span[@class='required']"

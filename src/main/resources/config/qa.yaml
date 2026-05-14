@@ -1,0 +1,44 @@
+environment: qa
+application:
+  url: "https://qa-flexcube.mashreq.ae"
+  timeout: 30
+  max_retries: 3
+
+player:
+  browser: chromium
+  headless: true
+  slowmo: 0
+  viewport:
+    width: 1920
+    height: 1080
+  trace: false
+  screenshot: on_failure
+  video: on_failure
+
+database:
+  driver: oracle.jdbc.driver.OracleDriver
+  url: jdbc:oracle:thin:@qa-db.mashreq.ae:1521:FLEXCUBE
+  username: ${DB_USER}
+  password: ${DB_PASSWORD}
+  connection_timeout: 30
+
+adf:
+  sync:
+    enabled: true
+    timeout: 15
+    form_ready_check: "return oracle.Forms.isConnected();"
+
+logging:
+  level: INFO
+  pattern: "[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] [%c{1}] %m%n"
+
+reporting:
+  extent:
+    enabled: true
+    path: "reports/extent-reports/"
+  screenshots:
+    enabled: true
+    path: "reports/screenshots/"
+  videos:
+    enabled: false
+    path: "reports/videos/"
