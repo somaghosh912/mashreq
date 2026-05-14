@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Mashreq FLEXCUBE Cucumber Suite" parallel="tests" thread-count="2" verbose="2">
+    <listeners>
+        <listener class-name="com.mashreq.automation.listeners.ExtentListener"/>
+        <listener class-name="com.mashreq.automation.listeners.RetryListener"/>
+    </listeners>
+
+    <test name="CIF Maker-Checker Tests" enabled="true">
+        <parameter name="env" value="qa"/>
+        <parameter name="browser" value="chromium"/>
+        <classes>
+            <class name="io.cucumber.testng.AbstractTestNGCucumberTests">
+                <methods>
+                    <include name="feature" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Fund Transfer Tests" enabled="true">
+        <parameter name="env" value="qa"/>
+        <parameter name="browser" value="chromium"/>
+        <classes>
+            <class name="io.cucumber.testng.AbstractTestNGCucumberTests">
+                <methods>
+                    <include name="feature" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
