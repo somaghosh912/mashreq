@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Mashreq FLEXCUBE Enterprise Suite" parallel="methods" thread-count="4" verbose="2">
+    <listeners>
+        <listener class-name="com.mashreq.automation.listeners.ExtentListener"/>
+        <listener class-name="com.mashreq.automation.listeners.RetryListener"/>
+    </listeners>
+
+    <!-- Smoke Tests - Quick validation -->
+    <test name="Smoke Tests" enabled="true">
+        <parameter name="env" value="qa"/>
+        <parameter name="browser" value="chromium"/>
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.mashreq.automation.tests.workflows"/>
+        </packages>
+    </test>
+
+    <!-- Regression Tests - Comprehensive validation -->
+    <test name="Regression Tests" enabled="true">
+        <parameter name="env" value="qa"/>
+        <parameter name="browser" value="chromium"/>
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.mashreq.automation.tests.workflows"/>
+        </packages>
+    </test>
+
+    <!-- Maker-Checker Tests - Business workflows -->
+    <test name="Maker-Checker Workflows" enabled="true">
+        <parameter name="env" value="qa"/>
+        <parameter name="browser" value="chromium"/>
+        <groups>
+            <run>
+                <include name="maker-checker"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.mashreq.automation.tests.workflows"/>
+        </packages>
+    </test>
+
+    <!-- Critical Path Tests - Production validation -->
+    <test name="Critical Path" enabled="false">
+        <parameter name="env" value="prod"/>
+        <parameter name="browser" value="chromium"/>
+        <groups>
+            <run>
+                <include name="critical"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.mashreq.automation.tests.workflows"/>
+        </packages>
+    </test>
+</suite>
